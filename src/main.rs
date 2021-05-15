@@ -2,9 +2,14 @@
 // No incluiremos librerias standard ni funcion main, sino psp_main
 #![no_std]
 #![no_main]
+
 //De esta forma importo un archivo a mi main
 mod overclock;
 mod time;
+//mod std_print_test;
+//mod test_input;
+use psp::dprintln;
+use psp::enable_home_button;
 
 //Esta es la description para el OS del psp, esto seria el nombre y version de nuestra app
 psp::module!("tutorial-hello", 1,0);
@@ -13,15 +18,31 @@ psp::module!("tutorial-hello", 1,0);
 pub fn psp_main(){
     //Activo el home button del psp los :: equivalen a un . en otros lenguajes
     //Esto es necesario en todos los proyectos
-    psp::enable_home_button();
+    enable_home_button();
 
 
-    psp::dprintln!("");
+    dprintln!("Testing");
+    dprintln!("");
 
     //De esta forma llamo la funcion que esta en mi archivo overclock
     overclock::change_psp_clock_speed();
 
-    psp::dprintln!("");
+    dprintln!("");
 
     time::count_time();
+
+    dprintln!("");
+
+  //  test_input::input();
+
+   // std_print_test::std_testing();
+
+   for number in 1..10 {
+       
+        //si el numero es par imprimelo
+        if number % 2 == 0 {
+
+            dprintln!("number: {}", number);
+        }
+   }
 }
