@@ -4,15 +4,18 @@
 #![no_main]
 
 //De esta forma importo un archivo a mi main
+//mod se refiere a modulo, basicamente importamos modulos a nuestro main
 mod overclock;
 mod time;
 //mod std_print_test;
 mod control;
+mod file_management;
+
 use psp::dprintln;
 use psp::enable_home_button;
 
 //Esta es la description para el OS del psp, esto seria el nombre y version de nuestra app
-psp::module!("tutorial-hello", 1,0);
+psp::module!("tutorial-hello", 1, 0);
 
 //De esta form se escribe una funcion publica en rust
 pub fn psp_main(){
@@ -35,7 +38,10 @@ pub fn psp_main(){
 
    // std_print_test::std_testing();
 
-   for number in 1..10 {
+
+   let end_of_for = 10;
+
+   for number in 1..end_of_for {
        
         //si el numero es par imprimelo
         if number % 2 == 0 {
@@ -45,4 +51,6 @@ pub fn psp_main(){
    }
 
     control::input();
+
+    file_management::file();
 }
