@@ -7,7 +7,7 @@
 mod overclock;
 mod time;
 //mod std_print_test;
-//mod test_input;
+mod control;
 use psp::dprintln;
 use psp::enable_home_button;
 
@@ -33,8 +33,6 @@ pub fn psp_main(){
 
     dprintln!("");
 
-  //  test_input::input();
-
    // std_print_test::std_testing();
 
    for number in 1..10 {
@@ -45,4 +43,6 @@ pub fn psp_main(){
             dprintln!("number: {}", number);
         }
    }
+
+    control::input();
 }
